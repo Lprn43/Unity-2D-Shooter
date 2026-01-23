@@ -851,7 +851,6 @@ GameObject:
   - component: {fileID: 173840161}
   - component: {fileID: 173840163}
   - component: {fileID: 173840164}
-  - component: {fileID: 173840165}
   m_Layer: 0
   m_Name: zombi_0
   m_TagString: zombi
@@ -1003,23 +1002,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &173840165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173840160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58e7a3a413b542a42b71db9477e38628, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::spritechanger
-  x: 0.7
-  sprite1: {fileID: 7672111943210415622, guid: aeebb6e1dce10484b9937f20e65f4f7c, type: 3}
-  sprite2: {fileID: 4623092500395953859, guid: 01a899b488146e54b92b3e889653b3fd, type: 3}
 --- !u!1 &193100606
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,7 +3148,7 @@ GameObject:
   - component: {fileID: 814413114}
   m_Layer: 0
   m_Name: pistol_scaled_4x_pngcrushed_0
-  m_TagString: Untagged
+  m_TagString: tabanca
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4463,7 +4447,7 @@ GameObject:
   - component: {fileID: 1030882039}
   m_Layer: 0
   m_Name: laser_0
-  m_TagString: Untagged
+  m_TagString: lazer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5060,10 +5044,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1197871930}
   - component: {fileID: 1197871931}
-  - component: {fileID: 1197871935}
+  - component: {fileID: 1197871936}
   - component: {fileID: 1197871934}
   - component: {fileID: 1197871933}
   - component: {fileID: 1197871932}
+  - component: {fileID: 1197871935}
   m_Layer: 6
   m_Name: man_scaled_4x_pngcrushed_0
   m_TagString: Untagged
@@ -5230,7 +5215,29 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.38, y: 0.61}
   m_EdgeRadius: 0
---- !u!114 &1197871935
+--- !u!95 &1197871935
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197871929}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7db27a576559cba4cadf42d4c4037543, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1197871936
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5242,7 +5249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58e7a3a413b542a42b71db9477e38628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::spritechanger
-  x: 0.5
   sprite1: {fileID: -8686077742762998392, guid: f79600717702a214fa9dc404ed8b488b, type: 3}
   sprite2: {fileID: -9190082289105938778, guid: ad9624d4a0354e4408a30a4ac34c7a4d, type: 3}
 --- !u!1 &1254047950
@@ -7275,7 +7281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::weapon
   capacity: 10
-  reloadtime: 2
+  reloadtime: 5
   player: {fileID: 1197871932}
   gun: {fileID: 1644229145}
   weaponpng: {fileID: 814413114}
