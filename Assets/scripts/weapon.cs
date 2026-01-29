@@ -25,7 +25,11 @@ public class weapon : MonoBehaviour
 
     void Update()
     {
-        Vector2 mousepos = new Vector2(Input.mousePosition.x,Input.mousePosition.y);
+        Vector3 mousepos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        /*Vector3 direction = mousepos - player.transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        gun.transform.rotation = Quaternion.Euler(new Vector3(0, 0,angle));
+        gun.transform.position = player.transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(0.4f, 0, 0);*/
         ray = new Ray2D(player.transform.position,mousepos);
         //Debug.DrawLine(player.transform.position, mousepos);
         //Debug.Log(ray.direction);
@@ -41,6 +45,8 @@ public class weapon : MonoBehaviour
         gun.transform.right = -ray.direction;
         //gun.transform.rotation = new Quaternion(ray.direction.x,0,0,0);
         gun.transform.position = new Vector2(player.position.x + ray.direction.normalized.x*0.4f,player.position.y + ray.direction.normalized.y*0.4f);
+        /*float angle = Mathf.Atan2(ray.direction.normalized.y,ray.direction.normalized.x)* Mathf.Rad2Deg;
+        gun.transform.eulerAngles = new Vector3(0,0,angle);*/
         RaycastHit2D raycast = Physics2D.Raycast(pistolsonu.transform.position,mousepos);
         Debug.DrawLine(pistolsonu.transform.position,mousepos);
 
@@ -54,7 +60,7 @@ public class weapon : MonoBehaviour
         {
             ammo--;
             print(ammo);
-            if (raycast && raycast.transform.gameObject.tag == "zombi" && reload == false)
+            if (raycast && /*raycast.transform.gameObject.tag == "zombi" &&*/ reload == false)
             {
                 raycast.transform.gameObject.SetActive(false);
                 print(raycast.transform.gameObject.tag);

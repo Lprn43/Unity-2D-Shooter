@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c790f34c3b6d844be6a2bd478b517e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::zombi
-  speed: 0.1
+  speed: 0.2
   rb: {fileID: 1854484676507173149}
   playerrb: {fileID: 0}
   player: {fileID: 0}

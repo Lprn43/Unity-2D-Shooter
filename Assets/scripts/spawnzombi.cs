@@ -28,7 +28,7 @@ public class spawnzombi : MonoBehaviour
             Vector3 pos = spawnpoint[x].transform.TransformPoint(zombi.transform.position);
             Quaternion qua = new Quaternion(0, 0, 0, 0);
             Instantiate(zombi, spawnpoint[x].transform.position, qua);
-            print(x);
+            print(spawnpoint[x].transform.position);
             time = 0;
         }
         //StartCoroutine(Spawn());
