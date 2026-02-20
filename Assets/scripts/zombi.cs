@@ -17,12 +17,14 @@ public class zombi : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (animator.GetBool("death") == false)
+        player playerscript = player.GetComponent<player>();
+        if (animator.GetBool("death") == false && playerscript.alive == true)
         {
             player = GameObject.FindGameObjectWithTag("player");
             playerrb = player.GetComponent<Rigidbody2D>();

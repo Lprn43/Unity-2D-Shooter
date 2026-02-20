@@ -1,64 +1,90 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class player : MonoBehaviour
 {
+    public bool alive = true;
     public Rigidbody2D rb;
+    public Animator anim;
+    public SpriteRenderer spriteRenderer;
+    public Sprite death;
     void Start()
     {
     }
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "zombi")
+        {
+            alive = false;
+        }
+    }
     void Update()
     {
-        if (Input.GetKey(KeyCode.W) == true)
+        if (alive == true)
         {
-            rb.linearVelocityY = 1;
-            //print("W basildi");
+            anim.enabled = true;
+            if (Input.GetKey(KeyCode.W) == true)
+            {
+                rb.linearVelocityY = 1;
+                //print("W basildi");
+            }
+            else if (Input.GetKey(KeyCode.S) == true)
+            {
+                rb.linearVelocityY = -1;
+                //print("S basildi");
+            }
+            else if (Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.S) == false)
+            {
+                rb.linearVelocityY = 0;
+            }
+            if (Input.GetKey(KeyCode.D) == true)
+            {
+                rb.linearVelocityX = 1;
+                //print("D basildi");
+                rb.transform.rotation = new Quaternion(0, 180, 0, 0);
+            }
+            else if (Input.GetKey(KeyCode.A) == true)
+            {
+                rb.linearVelocityX = -1;
+                //print("A basildi");
+                rb.transform.rotation = new Quaternion(0, 0, 0, 0);
+            }
+            else if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false)
+            {
+                rb.linearVelocityX = 0;
+            }
+            if (rb.linearVelocityY > 0 && rb.linearVelocityX > 0)
+            {
+                rb.linearVelocityX = 0.7071f;
+                rb.linearVelocityY = 0.7071f;
+            }
+            else if (rb.linearVelocityY > 0 && rb.linearVelocityX < 0)
+            {
+                rb.linearVelocityX = -0.7071f;
+                rb.linearVelocityY = 0.7071f;
+            }
+            else if (rb.linearVelocityY < 0 && rb.linearVelocityX > 0)
+            {
+                rb.linearVelocityX = 0.7071f;
+                rb.linearVelocityY = -0.7071f;
+            }
+            else if (rb.linearVelocityY < 0 && rb.linearVelocityX < 0)
+            {
+                rb.linearVelocityX = -0.7071f;
+                rb.linearVelocityY = -0.7071f;
+            }
+
         }
-        else if (Input.GetKey(KeyCode.S) == true)
+        if(alive == false)
         {
-            rb.linearVelocityY = -1;
-            //print("S basildi");
-        }
-        else if (Input.GetKey(KeyCode.W) == false && Input.GetKey(KeyCode.S) == false)
-        {
+            anim.SetBool("alive", false);
+            rb.linearVelocityX = 0;
             rb.linearVelocityY = 0;
         }
-        if (Input.GetKey(KeyCode.D) == true)
+        if (anim.GetBool("olu") == true)
         {
-            rb.linearVelocityX = 1;
-            //print("D basildi");
-            rb.transform.rotation = new Quaternion(0,180,0,0);
+            spriteRenderer.sprite = death;
+            anim.enabled = false;
         }
-        else if (Input.GetKey(KeyCode.A) == true)
-        {
-            rb.linearVelocityX = -1;
-            //print("A basildi");
-            rb.transform.rotation = new Quaternion(0, 0, 0, 0);
-        }
-        else if (Input.GetKey(KeyCode.A) == false && Input.GetKey(KeyCode.D) == false)
-        {
-            rb.linearVelocityX = 0;
-        }
-        if (rb.linearVelocityY > 0 && rb.linearVelocityX > 0) 
-        {
-            rb.linearVelocityX = 0.7071f;
-            rb.linearVelocityY = 0.7071f; 
-        }
-        else if (rb.linearVelocityY > 0 && rb.linearVelocityX < 0)
-        {
-            rb.linearVelocityX = -0.7071f;
-            rb.linearVelocityY = 0.7071f;
-        }
-        else if (rb.linearVelocityY < 0 && rb.linearVelocityX > 0)
-        {
-            rb.linearVelocityX = 0.7071f;
-            rb.linearVelocityY = -0.7071f;
-        }
-        else if (rb.linearVelocityY < 0 && rb.linearVelocityX < 0)
-        {
-            rb.linearVelocityX = -0.7071f;
-            rb.linearVelocityY = -0.7071f;
-        }
-        //else { rb.linearVelocity = new Vector2(0, 0); }
     }
 }
