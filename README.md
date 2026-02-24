@@ -1,1 +1,1 @@
-![Logo](assets/textures/logo.png)
+![Logo](Assets/textures/logo.png)
